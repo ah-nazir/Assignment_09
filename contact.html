@@ -121,9 +121,6 @@
         <?php
 
 if (isset($_POST['submit'])) {
-  // process form data here
-
-  // display thank you message after processing the form
   echo "Thank you. Stay Connect.";
 }
 
@@ -143,14 +140,11 @@ if (isset($_POST['submit'])) {
     
       form.addEventListener('submit', (event) => {
         event.preventDefault();
-    
-        // make a request to submit the form data
         fetch(form.action, {
           method: form.method,
           body: new FormData(form),
         })
         .then(response => {
-          // hide the form and display the thank you message
           form.style.display = 'none';
           message.textContent = 'Thank you. Stay Connect.';
         })
