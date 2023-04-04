@@ -118,6 +118,18 @@
             <button type="submit" name="submit">Submit</button>
           </div>
         </form>
+        <?php
+
+if (isset($_POST['submit'])) {
+  // process form data here
+
+  // display thank you message after processing the form
+  echo "Thank you. Stay Connect.";
+}
+
+?>
+<div id="message"></div>
+
       </div>
       <div>
         <h2>Contact information</h2>
@@ -125,6 +137,29 @@
         <p>Email: email@email.com
       </div>
     </main>
+    <script>
+      const form = document.querySelector('form');
+      const message = document.querySelector('#message');
+    
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+    
+        // make a request to submit the form data
+        fetch(form.action, {
+          method: form.method,
+          body: new FormData(form),
+        })
+        .then(response => {
+          // hide the form and display the thank you message
+          form.style.display = 'none';
+          message.textContent = 'Thank you. Stay Connect.';
+        })
+        .catch(error => {
+          console.error('Error submitting form:', error);
+        });
+      });
+    </script>
+    
     <footer>
       <p>&copy; 2023 My Blog. All rights reserved.</p>
     </footer>
